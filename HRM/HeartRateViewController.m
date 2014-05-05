@@ -40,7 +40,6 @@
     
     self.heartRateMonitors = [NSMutableArray array];
     self.manager = [[CBCentralManager alloc] initWithDelegate:self queue:nil];    
-    [self startScan];
 }
 
 - (void)viewDidUnload
@@ -72,6 +71,7 @@
             state = @"Bluetooth is currently powered off.";
             break;
         case CBCentralManagerStatePoweredOn:
+			[self startScan];
             return TRUE;
         case CBCentralManagerStateUnknown:
         default:
